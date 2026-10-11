@@ -5,7 +5,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = ['CONTRIBUTING.md', 'SECURITY.md', 'CHANGELOG.md', 'ROADMAP.md', 'THIRD_PARTY_NOTICES.md',
-         'docs/RELEASE-v0.8.0.md', 'docs/RELEASING.md', 'scripts/verify_release.py',
+         'docs/RELEASE-v0.8.0.md', 'docs/RELEASING.md', 'docs/FIRST_RUN.md', 'docs/FIRST_RUN.tr.md', 'docs/DEMO.md', 'docs/demo.gif', 'scripts/verify_release.py',
          '.github/workflows/ci.yml', '.github/dependabot.yml', '.github/PULL_REQUEST_TEMPLATE.md',
          '.github/ISSUE_TEMPLATE/bug_report.yml', '.github/ISSUE_TEMPLATE/feature_request.yml', '.github/ISSUE_TEMPLATE/config.yml',
          'README.md', 'README.tr.md', 'LICENSE', '.gitignore', '.gitattributes', 'START.cmd', 'docs/preview.jpg',

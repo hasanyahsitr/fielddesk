@@ -14,7 +14,7 @@ FILES = ['CONTRIBUTING.md', 'SECURITY.md', 'CHANGELOG.md', 'ROADMAP.md', 'THIRD_
          'requirements.txt', 'scripts/build_release.py', 'scripts/build_windows.py', 'tests/test_app.py', 'tests/test_i18n.js', 'tests/test_workflows.py',
          'app/documents.py','app/ocr.py','tests/test_documents.py', 'app/providers.py',
          'app/static/i18n.js', 'app/static/providers.js', 'app/static/providers.css', 'tests/test_providers.py',
-         'app/packages.py', 'app/catalog.json', 'app/static/catalog.js', 'app/static/catalog.css', 'tests/test_packages.py', 'app/package_lifecycle.py']
+         'app/packages.py', 'app/catalog.json', 'app/static/catalog.js', 'app/static/catalog.css', 'tests/test_packages.py', 'app/package_lifecycle.py', 'tests/test_library_ui.js']
 
 
 def main():

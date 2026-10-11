@@ -191,7 +191,9 @@ Object.assign(EN, {
   "Tesseract OCR · Türkçe/İngilizce hazır": "Tesseract OCR · Turkish/English ready",
   "Dosyalar arşivdir; tek tıkla sistem kurulumu yapılmaz. Bir ISO’yu saklamak diski önyüklenebilir yapmaz.": "These files are an archive; operating systems are not installed with one click. Storing an ISO does not make the drive bootable.",
   "Windows 10 için medya oluşturma aracı var, ISO henüz yok.": "The Windows 10 Media Creation Tool is available; the ISO is not yet present.",
-  "Acronis paketi denemedir.": "The Acronis package is a trial."
+  "Acronis paketi denemedir.": "The Acronis package is a trial.",
+  "Arama tamamlanamadı. Yeniden dene.": "Search could not be completed. Try again.",
+  "Girdiler kontrol ediliyor.": "Checking inputs."
 });
 
 function translateUI(text,language='en') {
@@ -200,6 +202,7 @@ function translateUI(text,language='en') {
   if(translated!==undefined)return text.replace(trimmed,translated);
   // Composite UI messages contain numbers, dates, file names or vendor names.
   const rules=[
+    [/^(.+) \((\d+)\/(\d+)\)$/,(_,message,done,total)=>`${translateUI(message,'en')} (${done}/${total})`],
     [/^(Dosyalar arşivdir;.+?yapmaz\.)( Windows 10.+?yok\.)?( Acronis.+?denemedir\.)?$/,(_,a,b,c)=>[a,b,c].filter(Boolean).map(x=>translateUI(x.trim(),'en')).join(' ')],
     [/^Kuyruk tamamlandı\. (\d+) paket hazırlanamadı\.$/,(_,n)=>`Queue completed. ${n} packages could not be prepared.`],
     [/^(\d[\d.,]*) öğe( · filtrelenmiş)?$/,(_,n,f)=>`${n} ${n==='1'?'item':'items'}${f?' · filtered':''}`],
@@ -213,7 +216,10 @@ function translateUI(text,language='en') {
     [/^Geri alınabilir kaldırılanlar \((\d+)\)$/,(_,n)=>`Removed apps · undo available (${n})`],
     [/^(\d+)\/(\d+) paket işlendi$/,(_,a,b)=>`${a}/${b} packages processed`],
     [/^(\d+)\/(\d+) dosya çantaya kopyalanıyor…$/,(_,a,b)=>`Copying file ${a}/${b} to the workspace…`],
-    [/^(\d+) sayfa$/,(_,n)=>`${n} pages`],
+    [/^(\d+) sayfa$/,(_,n)=>`${n} ${n==='1'?'page':'pages'}`],
+    [/^(\d+) PDF → (\d+) sayfalı tek PDF$/,(_,files,pages)=>`${files} ${files==='1'?'PDF':'PDFs'} → one PDF with ${pages} ${pages==='1'?'page':'pages'}`],
+    [/^(\d[\d.,]*) KB · (\d+) sayfa$/,(_,size,pages)=>`${size} KB · ${pages} ${pages==='1'?'page':'pages'}`],
+    [/^(\d+) sonuç bulundu\.$/,(_,n)=>n==='0'?'No results found.':`${n} ${n==='1'?'result':'results'} found.`],
     [/^(.+) GB kullanılabilir RAM$/,(_,n)=>`${n} GB available RAM`],
     [/^(.+) GB boş$/,(_,n)=>`${n} GB free`],
     [/^(Son kayıt: |Son başarılı kayıt: )(.+)$/,(_,label,date)=>`${label==='Son kayıt: '?'Last record: ':'Last successful record: '}${date}`],

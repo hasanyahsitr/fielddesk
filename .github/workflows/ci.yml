@@ -45,6 +45,8 @@ jobs:
           }
           node tests/test_i18n.js
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node tests/test_library_ui.js
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Build source distribution
         run: python -X utf8 scripts/build_release.py
       - name: Verify release contents

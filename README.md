@@ -1,14 +1,24 @@
 # FieldDesk
 
-**A portable local workspace for Windows. · v0.8.0**
+**Your Windows toolkit, on a drive.**
 
 [Türkçe](README.tr.md) · [Roadmap](ROADMAP.md) · [Contributing](CONTRIBUTING.md)
 
 **Preview release · Windows x64 · MIT source license**
 
-Keep your tools, projects, documents and optional AI models on a drive, then open them from one interface. FieldDesk runs on your computer. Workflows run locally; cloud chat is optional and uses your own API key.
+Carry a workspace on a USB drive or external disk: choose your programs, work with documents and optionally chat with a local AI model from one interface. FieldDesk runs on your Windows computer. App downloads need the internet; document workflows and search run locally. Cloud chat is optional and uses your own API key.
 
-![FieldDesk workspace](docs/preview.jpg)
+[**Download Windows x64 · ~23 MB**](https://github.com/hasanyahsitr/fielddesk/releases/download/v0.8.0/FieldDesk-0.8.0-windows-x64.zip) · [Watch the demo](https://github.com/hasanyahsitr/fielddesk/releases/download/v0.8.0/FieldDesk-0.8.0-demo.mp4) · [First-run guide](docs/FIRST_RUN.md)
+
+![Edited walkthrough: choose a program, merge two PDFs and find a project note](docs/demo.gif)
+
+Real app capture with fictional documents. The GIF is an edited overview; the video shows the interaction sequence. AI and OCR require separately supplied components. [Demo details](docs/DEMO.md).
+
+## Three ways to use it
+
+- **A toolkit for another Windows PC:** keep the workspace on an external drive, download the tools you choose and launch supported portable apps from the menu. Host policies and third-party prerequisites still apply.
+- **A document handover:** select two PDFs, review their order and page count, then merge them into a new output folder while keeping the originals.
+- **Notes you can find offline:** keep project notes in the workspace, update the local index and search their text without sending it to a cloud service.
 
 ## Get started
 
@@ -69,6 +79,8 @@ This is an early Windows x64 release. The app catalog is intentionally pinned, l
 ## Feedback and contribution
 
 Bug reports and feature requests in English or Turkish are welcome. Include your FieldDesk version, Windows version and reproduction steps using test data. Remove API keys, session tokens and personal document excerpts from screenshots and logs. Use [CONTRIBUTING.md](CONTRIBUTING.md) for development and [SECURITY.md](SECURITY.md) for security-sensitive reports.
+
+Trying FieldDesk for the first time? Follow the [five-minute first-run checklist](docs/FIRST_RUN.md), then tell us where you got stuck and whether you would use it again. To contribute code or documentation, start with [good first issues](https://github.com/hasanyahsitr/fielddesk/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22) or [help wanted](https://github.com/hasanyahsitr/fielddesk/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22help%20wanted%22).
 
 See the [changelog](CHANGELOG.md), [preview release notes](docs/RELEASE-v0.8.0.md) and [roadmap](ROADMAP.md). The Windows CI workflow checks backend behavior, JavaScript syntax, localization and source release contents; the initial [GitHub-hosted Windows run](https://github.com/hasanyahsitr/fielddesk/actions/runs/38172259405) passed. Real OCR/model checks are performed separately with a supplied local kit.
 

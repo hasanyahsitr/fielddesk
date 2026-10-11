@@ -19,6 +19,7 @@ Use a separate empty workspace for development. Never use a real drive as a test
 ```powershell
 .venv\Scripts\python -X utf8 -m unittest discover -s tests -v
 node tests/test_i18n.js
+node tests/test_library_ui.js
 .venv\Scripts\python -X utf8 scripts/build_release.py
 .venv\Scripts\python -X utf8 scripts/verify_release.py
 ```

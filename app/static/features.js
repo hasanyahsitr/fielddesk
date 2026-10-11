@@ -19,7 +19,7 @@ function renderPlan(plan){
   workflowPlan=plan;
   let rows=plan.files.map((x,i)=>`<div class="plan-row"><b>${i+1}</b><span>${esc(x.name)}</span><small>${(plan.kind==='pdf'||plan.kind==='ocr')?x.pages+' sayfa':`${x.width}×${x.height} → ${x.output_width}×${x.output_height}`}</small></div>`).join('');
   if(plan.kind==='project')rows=`<div class="plan-note"><strong>${esc(plan.project.path)}</strong><p>${plan.tools.length} taşınabilir araç yolu bulundu.</p><p>node_modules: ${plan.node_modules?'var':'bulunamadı'} · npm komutları: ${esc(plan.scripts.join(', ')||'yok')}</p></div>`;
-  $('#workflow-plan').innerHTML=`<h2>${esc(plan.title)}</h2><p class="plan-summary">${esc(plan.summary)}</p>${rows}<div class="plan-warnings">${plan.warnings.map(x=>`<p>ⓘ ${esc(x)}</p>`).join('')}<p>Çıktılar ayrı bir klasöre yazılır. Kaynak dosyalar değişmez.</p></div>`;
+  $('#workflow-plan').innerHTML=`<h2>${esc(plan.title)}</h2><p class="plan-summary">${esc(plan.summary)}</p>${rows}<div class="plan-warnings">${plan.warnings.map(x=>`<p><span aria-hidden="true">ⓘ </span>${esc(x)}</p>`).join('')}<p>Çıktılar ayrı bir klasöre yazılır. Kaynak dosyalar değişmez.</p></div>`;
   $('#workflow-run').hidden=false;$('#workflow-run').disabled=false;
 }
 function updateWorkflowJob(job){

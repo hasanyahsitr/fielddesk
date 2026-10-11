@@ -122,11 +122,23 @@ async function submitChat() {
     $('#chat-input').value='';updateJob(job);
   } catch(e) {setBusy(false);toast(e.message);}
 }
+let librarySearchSequence=0;
 async function searchLibrary() {
   const query=$('#library-query').value.trim();if(!query)return;
+  const sequence=++librarySearchSequence;
+  $('#library-search-status').textContent='Yerel dosyalarda aranıyor…';
   $('#library-results').innerHTML='<div class="empty-state">Yerel dosyalarda aranıyor…</div>';
-  const result=await api('/api/library/search?q='+encodeURIComponent(query));
-  $('#library-results').innerHTML=result.results.map((x,i)=>`<article class="result"><div class="result-actions"><h3 data-user-content>${i+1}. ${esc(x.title)}</h3><button class="launch-button" data-file="${esc(x.path)}">Dosyayı aç ↗</button></div><span class="result-path">${esc(x.path)}</span><pre>${esc(x.excerpt)}</pre></article>`).join('')||'<div class="empty-state">Eşleşme bulunamadı. Daha belirgin bir kelimeyle tekrar ara.</div>';
+  try {
+    const result=await api('/api/library/search?q='+encodeURIComponent(query));
+    if(sequence!==librarySearchSequence)return;
+    $('#library-results').innerHTML=result.results.map((x,i)=>`<article class="result"><div class="result-actions"><h3 data-user-content>${i+1}. ${esc(x.title)}</h3><button class="launch-button" data-file="${esc(x.path)}">Dosyayı aç ↗</button></div><span class="result-path">${esc(x.path)}</span><pre>${esc(x.excerpt)}</pre></article>`).join('')||'<div class="empty-state">Eşleşme bulunamadı. Daha belirgin bir kelimeyle tekrar ara.</div>';
+    $('#library-search-status').textContent=`${result.results.length} sonuç bulundu.`;
+  } catch(error) {
+    if(sequence!==librarySearchSequence)return;
+    $('#library-search-status').textContent='Arama tamamlanamadı. Yeniden dene.';
+    $('#library-results').innerHTML='<div class="empty-state">Arama tamamlanamadı. Yeniden dene.</div>';
+    throw error;
+  }
 }
 document.addEventListener('click',async event=>{
   const b=event.target.closest('button,[data-view]');if(!b||b.disabled)return;

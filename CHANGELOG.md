@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Translate PDF preview summaries, warning text and output page counts in the English UI, including singular page counts. File names and paths remain unchanged.
+- Announce document search progress, result counts and failures through a separate polite status region. Document excerpts are not live announcements. Older searches cannot overwrite a newer search result.
+
 ## 0.8.0 — 2026-10-11 · Preview
 
 This is the first prepared GitHub release of FieldDesk. Earlier development used the ATÖLYE name; existing workspaces remain compatible.

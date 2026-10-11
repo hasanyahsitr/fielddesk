@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible FieldDesk problem (English or Turkish).
+title: "[Bug]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: "Use disposable test data. Remove API keys, session tokens and personal information. See SECURITY.md for vulnerabilities."
+  - type: input
+    id: version
+    attributes:
+      label: FieldDesk version
+      placeholder: "0.8.0 / source commit"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Windows version, x64, source or Windows ZIP, internal/USB drive.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the affected screen and steps using test files.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized logs or screenshots
+      description: Optional. For chat problems include provider/model, general vs document mode and approximate loading time, without keys or private messages.

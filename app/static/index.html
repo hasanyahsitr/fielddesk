@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="atolye-token" content="__TOKEN__">
+<title>FieldDesk — Portable workspace</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/app.css">
+<link rel="stylesheet" href="/features.css">
+<link rel="stylesheet" href="/providers.css">
+<link rel="stylesheet" href="/catalog.css">
+<script defer src="/i18n.js"></script>
+<script defer src="/app.js">
+</script>
+<script defer src="/features.js"></script>
+<script defer src="/providers.js"></script>
+<script defer src="/catalog.js"></script>
+</head>
+<body>
+<a class="skip" href="#content">İçeriğe geç</a>
+<aside class="sidebar">
+<a class="brand" href="#home">
+<img src="/icon.svg" alt="" width="38" height="38">
+<span>FieldDesk<small>Taşınabilir araçlar</small>
+</span>
+</a>
+<div class="nav-label">Çalışma alanı</div>
+<nav aria-label="Ana menü">
+<button data-view="home" class="active">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10H3z"/><path d="M9 20v-7h6v7"/></svg> Genel bakış</button>
+<button data-view="apps">
+<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Uygulamalar <b id="nav-count">—</b>
+</button>
+<button data-view="workflows"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h15m-4-4 4 4-4 4M20 17H5m4-4-4 4 4 4"/></svg> İş akışları</button>
+<button data-view="chat">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v12H9l-5 4z"/><path d="M8 8h8M8 12h5"/></svg> Asistan</button>
+<button data-view="library">
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg> Bilgi merkezi</button>
+<button data-view="projects">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7l2 3h9v11H3z"/></svg> Projeler</button>
+<button data-view="archive">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v13H4zM3 3h18v5H3zM9 12h6"/></svg> Kurulum arşivi</button>
+<button data-view="system">
+<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M12 16v5m-5 0h10"/></svg> Sistem ve yedek</button>
+<button data-view="setup"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16M8 3v6m8 0v6m-6 0v6"/></svg> Çanta hazırlığı</button>
+</nav>
+<div class="side-bottom">
+<div class="status-dot">
+</div>
+<span>Yerel çalışma alanı<small>Dosyaların bu diskte</small>
+</span>
+</div>
+<div class="side-version">FieldDesk <span id="version">0.8.0</span> <span>· Windows x64</span>
+</div>
+</aside>
+<div class="workspace">
+<header class="topbar">
+<div class="breadcrumb">FieldDesk <span>/</span> <strong id="page-title">Genel bakış</strong>
+</div>
+<div class="top-actions">
+<span class="pill">● Yerel oturum</span>
+<label class="language-control"><span class="sr-only">Dil</span><select id="language-select" aria-label="Dil"><option value="en" data-i18n-ignore>English</option><option value="tr" data-i18n-ignore>Türkçe</option></select></label>
+<button id="refresh" class="icon-button" aria-label="Durumu yenile" title="Durumu yenile">↻</button>
+</div>
+</header>
+<main id="content" tabindex="-1">
+<section id="view-home" class="view">
+<div class="page-heading home-heading">
+<div><h1>Genel bakış</h1><p>Uygulamaların, dosyaların ve yerel araçların.</p></div>
+<button class="secondary" data-view="setup">Çalışma alanı ayarları</button>
+</div>
+<div class="workspace-location"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7l2 3h9v11H3z"/></svg><span>Çanta klasörü</span><code id="workspace-root">Kontrol ediliyor…</code></div>
+<div class="stats">
+<article>
+<span class="stat-label">Uygulama</span>
+<strong id="stat-apps">—</strong>
+<small>Kullanıma hazır</small>
+</article>
+<article>
+<span class="stat-label">Yerel model</span>
+<strong id="stat-models">—</strong>
+<small>Çevrimdışı sohbet</small>
+</article>
+<article>
+<span class="stat-label">Dizindeki dosya</span>
+<strong id="stat-files">—</strong>
+<small>Belge araması</small>
+</article>
+<article>
+<span class="stat-label">Boş alan</span>
+<strong id="stat-disk">—</strong>
+<small id="stat-archive">Arşiv kontrol ediliyor</small>
+</article>
+</div>
+<div class="section-title">
+<div>
+
+<h2>Hızlı erişim</h2>
+</div>
+<button class="text-button" data-view="apps">Tüm uygulamalar <span>→</span>
+</button>
+</div>
+<div id="quick-grid" class="app-grid compact">
+</div>
+<div class="home-bottom">
+<article class="feature-card">
+
+<div>
+
+<h3>Belge araması</h3>
+<p>Yerel kaynaklarında ara; asistanın ilgili dosyalardan bir yanıt hazırlasın.</p>
+<button class="text-button" data-view="library">Bilgi merkezine git →</button>
+</div>
+</article>
+<article class="backup-card">
+<span class="eyebrow">Yedekleme</span>
+<h3 id="home-backup-title">Yedek durumun kontrol ediliyor</h3>
+<p id="home-backup-text">
+</p>
+<button class="text-button" data-view="system">Sistem ve yedek →</button>
+</article>
+</div>
+</section>
+<section id="view-apps" class="view" hidden>
+<div class="page-heading">
+<div>
+
+<h1>Uygulamalar</h1>
+<p>Çantandaki programlar ve klasörler. Açmak için bir uygulama seç.</p>
+</div>
+<div class="catalog-heading-actions"><button id="open-catalog" class="primary">Program indir</button><button id="add-app" class="secondary">Uygulama ekle</button></div>
+</div>
+<label class="search-field">
+<svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg>
+<input id="app-search" placeholder="Uygulama, kategori veya iş ara…" aria-label="Uygulamalarda ara">
+<kbd>/</kbd>
+</label>
+<div id="app-filters" class="filters">
+</div>
+<div class="list-heading"><span id="apps-count" role="status"></span><span>Kategori / tür</span><span>İşlem</span></div>
+<div id="apps-grid" class="app-grid">
+</div>
+</section>
+<section id="view-chat" class="view" hidden>
+<div class="page-heading">
+<div>
+
+<h1>Asistan</h1>
+<p>Çevrimdışı yerel model veya kendi anahtarınla bir API servisi.</p>
+</div>
+<button id="clear-chat" class="secondary">Sohbeti temizle</button>
+</div>
+<div class="chat-layout">
+<div class="chat-main">
+<div id="provider-notice" class="provider-notice" role="status">Yerel mod · Mesajlar bu bilgisayarda işlenir.</div>
+<div class="chat-mode-row"><strong id="chat-mode-title">Normal sohbet</strong><span id="chat-mode-help">Normal sohbet · Belgeler aranmaz.</span></div>
+<div id="chat-thread" class="chat-thread" aria-live="polite">
+<div class="chat-welcome">
+
+<h2>Yeni sohbet</h2>
+<p>Normal sohbet için belge gerekmez. İstersen belge moduna geç.</p>
+<div class="suggestions">
+<button data-prompt="Bugün odaklı çalışmak için üç kısa öneri ver.">Çalışma planı hazırla</button>
+<button data-prompt="FieldDesk uygulama menüsü nasıl açılır?" data-documents="true">Belgelerde bir bilgi bul</button>
+</div>
+</div>
+</div>
+<div id="chat-progress" class="chat-progress" role="status" hidden>
+</div>
+<form id="chat-form">
+<label class="sr-only" for="chat-input">Asistana mesaj</label>
+<textarea id="chat-input" rows="3" maxlength="2000" placeholder="Bir soru yaz…">
+</textarea>
+<div class="composer-bottom">
+<label class="switch">
+<input type="checkbox" id="use-documents"> Belgelerime dayan</label>
+<button type="submit" id="chat-send" class="primary">Gönder ↑</button>
+</div>
+</form>
+<small class="chat-footnote">Yanıtlar kontrol gerektirir. Belge modu ilgili alıntıları getirir; tüm dosyaları bildiğini varsaymaz. Sohbet geçmişi sayfa yenilenince silinir.</small>
+</div>
+<aside class="model-panel">
+<div class="eyebrow">ASİSTAN BAĞLANTISI</div>
+<h3>Model ve bağlantı</h3>
+<label for="provider-select">Sağlayıcı</label>
+<select id="provider-select"><option value="local">Bu bilgisayar · Çevrimdışı</option></select>
+<div id="local-model-fields">
+<label for="model-select">Sohbet modeli</label>
+<select id="model-select">
+</select>
+<p>Gemma E2B bu çantada hız ve bellek için başlangıç seçeneği. E4B daha fazla kaynak ister.</p>
+</div>
+<div id="cloud-model-fields" hidden>
+<label for="cloud-model">Model kimliği</label>
+<input id="cloud-model" list="provider-models" maxlength="200" placeholder="Listeden seç veya model kimliğini yaz" autocomplete="off">
+<datalist id="provider-models"></datalist>
+<button id="open-provider-settings" class="secondary full">API bağlantısını düzenle</button>
+<div class="provider-actions"><button id="provider-list" class="secondary">Modelleri getir</button><button id="provider-test" class="secondary">Bağlantıyı dene</button></div>
+<p id="provider-config-status" class="fine-print" role="status"></p>
+<small>Bağlantı testi kısa bir istek gönderir; ücret/kota tüketebilir. Listedeki her model metin sohbetini desteklemeyebilir.</small>
+</div>
+<div class="model-status">
+<span class="status-dot">
+</span>
+<span id="model-status">Gerektiğinde başlar</span>
+</div>
+<button class="secondary full" id="stop-model">Yanıtı / yerel modeli durdur</button>
+<hr>
+<small>Bu sürüm metin sohbetini destekler. Yerel ilk yükleme HDD’de birkaç dakika sürebilir. API erişimi, ücret ve kota sağlayıcının koşullarına bağlıdır.</small>
+</aside>
+</div>
+</section>
+<section id="view-library" class="view" hidden>
+<div class="page-heading">
+<div>
+
+<h1>Bilgi merkezi</h1>
+<p>Projeler, belgeler ve rehberlerde çevrimdışı metin araması.</p>
+</div>
+<button id="index-library" class="secondary">Dizini güncelle ↻</button>
+</div>
+<form id="library-form" class="search-field">
+<svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg>
+<input id="library-query" aria-label="Belgelerde ara" placeholder="Bir konu, proje adı veya kelime yaz…">
+<button class="primary" type="submit">Ara →</button>
+</form>
+<div class="results-meta">
+<span id="library-status">
+</span>
+<button id="ask-library" class="text-button">Bu soruyu asistana sor ✳</button>
+</div>
+<div id="library-results">
+<div class="empty-state">Bilgin burada. Yukarıdan bir arama başlat.</div>
+</div>
+<details id="library-errors" class="fine-print" hidden></details>
+<p class="fine-print">Metin, kod, HTML, PDF, DOCX, XLSX ve PPTX dosyaları taranır. Görsel ve taranmış PDF için İş akışları → Metin oku seçeneğini kullan. Eski DOC/XLS/PPT, şifreli dosyalar ve gömülü nesneler desteklenmez. Excel formülleri hesaplanmaz; kayıtlı değerler okunur. Gizli klasörler ve yaygın sır dosyaları tarama dışında tutulur; bu bir sır tarama güvencesi değildir.</p>
+</section>
+<section id="view-projects" class="view" hidden>
+<div class="page-heading">
+<div>
+
+<h1>Projeler</h1>
+<p>Proje klasörünü veya taşınabilir VS Code çalışma alanını aç.</p>
+</div>
+<button class="secondary" data-open="terminal">Geliştirme terminali ↗</button>
+</div>
+<div id="projects-grid" class="project-grid">
+</div>
+<p class="fine-print">Projeler 04_PROJELER klasöründen, başlangıç şablonları 03_YAZILIM/Sablonlar klasöründen keşfedilir. Bağımlılık kurulumu ve proje sunucusu otomatik başlatılmaz.</p>
+</section>
+<section id="view-archive" class="view" hidden>
+<div class="page-heading">
+<div>
+
+<h1>Kurulum arşivi</h1>
+<p>Kurulum paketleri, işletim sistemleri ve kurtarma medyaları.</p>
+</div>
+<button class="secondary" data-open="installers">Arşiv klasörü ↗</button>
+</div>
+<label class="search-field">
+<svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg>
+<input id="archive-query" aria-label="Arşivde ara" placeholder="Paket adı veya kategori ara…">
+</label>
+<div class="archive-notice">
+<span>ⓘ</span>
+<p id="archive-note">Dosyalar arşivdir; tek tıkla sistem kurulumu yapılmaz. Bir ISO’yu saklamak diski önyüklenebilir yapmaz.</p>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>PAKET</th>
+<th>KATEGORİ</th>
+<th>BOYUT</th>
+<th>DURUM / KAYIT</th>
+<th>
+<span class="sr-only">İşlem</span>
+</th>
+</tr>
+</thead>
+<tbody id="archive-body">
+</tbody>
+</table>
+</div>
+<p class="fine-print">Doğrulama etiketleri indirme sırasında kaydedilmiş kontrollerdir; bu ekran her açılışta dosyaları yeniden hash’lemez. Ticari yazılımlar kendi lisans ve kullanım koşullarına tabidir.</p>
+</section>
+<section id="view-system" class="view" hidden>
+<div class="page-heading">
+<div>
+
+<h1>Sistem ve yedek</h1>
+<p>Cihaz kapasitesi, disk alanı ve yedek durumu.</p>
+</div>
+</div>
+<div id="system-grid" class="system-grid">
+</div>
+<article class="settings-card">
+<div>
+<div class="eyebrow">İKİNCİ DİSKE KOPYA</div>
+<h2>Yedekleme</h2>
+<p id="backup-detail">
+</p>
+<small>Mevcut çantanın yedekleme başlatıcısını açar. Tanımlı ayrı fiziksel disk gerekir; sonucu tamamlandığında yenile.</small>
+</div>
+<button id="backup-start" class="primary">Yedeklemeyi aç ↗</button>
+</article>
+<article class="settings-card">
+<div>
+<div class="eyebrow">OTURUMU TAMAMLA</div>
+<h2>Oturumu kapat</h2>
+<p>FieldDesk’i kapatmak yerel modeli durdurur. Açtığın diğer programları kapatıp Windows’ta diski güvenle kaldır.</p>
+</div>
+<button id="shutdown" class="secondary">FieldDesk’i kapat</button>
+</article>
+<p class="fine-print">Kişisel kasa klasörü kendiliğinden şifrelenmez. Yüklü programların tüm iş akışları bu ekran tarafından test edilmez.</p>
+</section>
+<section id="view-workflows" class="view" hidden>
+<div class="page-heading"><div><h1>İş akışları</h1><p>Dosyalarını seç, sonucu önizle, işlemi başlat. Kaynaklar korunur.</p></div><span class="pill">Yerel işlem</span></div>
+<div class="workflow-kinds">
+<button data-workflow="pdf" class="workflow-kind selected" aria-pressed="true"><span>PDF</span><strong>PDF birleştir</strong><small>Belgelerini tek dosyada topla.</small></button>
+<button data-workflow="images" class="workflow-kind" aria-pressed="false"><span>IMG</span><strong>Web görselleri</strong><small>Boyutlandır, sıkıştır, dönüştür.</small></button>
+<button data-workflow="ocr" class="workflow-kind" aria-pressed="false"><span>OCR</span><strong>Metin oku · OCR</strong><small>Taranmış belgelerini aranabilir yap.</small></button>
+<button data-workflow="project" class="workflow-kind" aria-pressed="false"><span>DEV</span><strong>Proje ortamı</strong><small>Terminalin ve araçların hazır olsun.</small></button>
+</div>
+<div class="workflow-body"><article class="workflow-input">
+<div class="step-label">01 / GİRDİLER</div><h2 id="workflow-heading">Belgeleri seç</h2>
+<div id="workflow-files-area"><p class="fine-print">En fazla 30 dosya; dosya başına 50 MB, toplam 150 MB. Sırayı aşağıdan değiştirebilirsin.</p><div class="file-buttons"><label class="secondary upload-label">Bilgisayardan ekle +<input type="file" id="workflow-upload" multiple accept=".pdf" class="sr-only"></label><button id="workflow-browse" class="secondary">Çantadan seç ↗</button></div><div id="workflow-files" class="file-list"><div class="empty-state">Henüz dosya seçilmedi.</div></div></div>
+<div id="image-options" class="form-grid" hidden><label>En fazla genişlik (px)<input id="image-width" type="number" value="1920" min="320" max="4096"></label><label>Format<select id="image-format"><option value="webp">WebP</option><option value="jpeg">JPEG</option><option value="png">PNG</option></select></label><label>Kalite<input id="image-quality" type="number" value="82" min="30" max="95"></label></div>
+<div id="ocr-options" class="form-grid" hidden><label>Metnin dili<select id="ocr-language"><option value="tur+eng">Türkçe + İngilizce</option><option value="tur">Türkçe</option><option value="eng">İngilizce</option></select></label><label>Saat yönünde döndür<select id="ocr-rotation"><option value="0">Döndürme</option><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></label></div><p id="ocr-note" class="fine-print" hidden>En fazla 50 sayfa. PDF sayfaları 300 DPI ile okunur. Düz ve net basılı metinler en iyi sonucu verir; kritik bilgileri kaynağıyla karşılaştır.</p>
+<div id="project-options" hidden><label class="field-label" for="workflow-project">Proje veya şablon</label><select id="workflow-project"></select><label class="switch"><input type="checkbox" id="workflow-editor" checked> VS Code’u da aç</label><p class="fine-print">Terminal seçilen klasörde açılır. Bağımlılık yüklenmez ve proje kodu çalıştırılmaz.</p></div>
+<button id="workflow-preview" class="primary full">Sonucu önizle →</button><p id="workflow-message" role="status" class="fine-print"></p>
+</article><article class="workflow-preview"><div class="step-label">02 / ÖNİZLEME VE SONUÇ</div><div id="workflow-plan"><div class="preview-empty"><span>⇄</span><h3>İşlem önizlemesi</h3><p>Dosyalarını eklediğinde sayfa sayısı, çıktı boyutları ve işlem adımları burada görünür.</p></div></div><button id="workflow-run" class="primary full" hidden>Onayla ve işlemi başlat →</button><div id="workflow-progress" role="status" hidden></div><button id="workflow-cancel" class="secondary full" hidden>OCR işlemini iptal et</button><button id="workflow-index" class="secondary full" hidden>Sonuçları Bilgi merkezine ekle ↗</button><button id="workflow-open-output" class="secondary full" hidden>Çıktı klasörünü aç ↗</button></article></div>
+<p class="fine-print">Çıktılar çantanın 12_ISLER/Ciktilar klasöründe ayrı bir işlem klasörüne yazılır. Bilgisayardan eklediğin girdilerin kopyaları 12_ISLER/Girdiler içinde kalır.</p>
+</section>
+<section id="view-setup" class="view" hidden><div class="page-heading"><div><h1>Çanta hazırlığı</h1><p>Çantanın klasörünü seç. Araçlarını, bağımlılıklarını ve eksikleri birlikte kontrol edelim.</p></div><span id="setup-badge" class="pill">KONTROL BEKLİYOR</span></div>
+<article class="settings-card setup-card"><div class="full"><label class="field-label" for="setup-root">Çanta klasörü</label><div class="search-field"><span>▥</span><input id="setup-root" placeholder="Örneğin E:\ATOLYE"><button class="secondary" id="setup-folder">Klasör seç ↗</button><button class="primary" id="setup-check">Kontrol et →</button></div><p class="fine-print">Mevcut dosyalar korunur. Hazırlık yalnızca eksik çalışma klasörlerini oluşturur; uygulama veya model indirmez.</p></div></article>
+<div id="setup-results"><div class="empty-state">Çanta klasörünü kontrol ederek başla.</div></div><button id="setup-apply" class="primary" hidden>Bu çalışma alanını hazırla ✓</button><p id="setup-message" class="fine-print" role="status"></p>
+</section>
+<footer>
+<span>Windows x64 · Yerel çalışma alanı</span>
+<span>FieldDesk · Yerel çalışma merkezi</span>
+</footer>
+</main>
+</div>
+<div id="toast" role="status" hidden>
+</div>
+<dialog id="app-dialog" class="dialog"><form id="add-app-form"><div class="dialog-heading"><div><div class="eyebrow">KENDİ ARAÇLARIN</div><h2>Uygulama ekle</h2></div><button type="button" data-close="app-dialog" class="icon-button" aria-label="Kapat">×</button></div><label class="field-label" for="custom-name">Uygulama adı</label><input id="custom-name" required maxlength="60" placeholder="Örneğin: GIMP"><label class="field-label" for="custom-path">Çanta içindeki .exe dosyası</label><div class="input-with-button"><input id="custom-path" required placeholder="01_TASINABILIR/Uygulamam/program.exe"><button type="button" id="custom-browse" class="secondary">Dosya seç ↗</button></div><label class="field-label" for="custom-description">Kısa açıklama</label><input id="custom-description" maxlength="200" placeholder="Bu araç ne işe yarıyor?"><label class="field-label" for="custom-category">Kategori</label><input id="custom-category" maxlength="30" value="Kendi araçlarım"><p class="fine-print">Taşınabilir program klasörünü çantana koy, ardından .exe dosyasını seç. Bu işlem programı kopyalamaz veya çalıştırmaz. Taşınabilirlik uygulamanın kendi desteğine bağlıdır.</p><p id="custom-message" role="status"></p><button type="submit" class="primary full">Menüye ekle +</button></form></dialog>
+<dialog id="picker-dialog" class="dialog picker-dialog"><div class="dialog-heading"><div><div class="eyebrow">ÇANTANIN İÇİNDE</div><h2>Dosya seç</h2></div><button data-close="picker-dialog" class="icon-button" aria-label="Kapat">×</button></div><div class="picker-toolbar"><button id="picker-up" class="secondary">↑ Üst klasör</button><span id="picker-path"></span></div><div id="picker-list"></div><button id="picker-done" class="primary full">Seçimi tamamla ✓</button></dialog>
+<dialog id="cloud-preview-dialog" class="cloud-preview-dialog"><div class="dialog-heading"><h2>Göndermeden önce kontrol et.</h2><button id="cloud-preview-close" class="icon-button" aria-label="Gönderimi iptal et">×</button></div><p id="cloud-preview-destination"></p><p id="cloud-preview-description"></p><h3>Sorun</h3><pre id="cloud-preview-question" data-user-content></pre><h3>Gönderilecek alıntılar</h3><div id="cloud-preview-sources"></div><p>Alıntılardaki kişisel veya gizli bilgileri kontrol et. Bu istek önceki sohbet geçmişini içermez. Sağlayıcının veri işleme koşulları uygulanır.</p><button id="cloud-preview-confirm" class="primary">Bu soru ve alıntıları gönder →</button><button id="cloud-preview-cancel" class="secondary">Vazgeç</button></dialog>
+<dialog id="provider-settings-dialog" class="provider-settings-dialog"><div class="dialog-heading"><div><div class="eyebrow">KENDİ ANAHTARINLA BAĞLAN</div><h2 id="provider-settings-title">API bağlantısı</h2></div><button id="provider-settings-close" class="icon-button" aria-label="API ayarlarını kapat">×</button></div>
+<p>FieldDesk anahtar sağlamaz. Sağlayıcı hesabının erişimi, ücretleri ve veri işleme koşulları geçerlidir.</p>
+<form id="provider-form" autocomplete="off">
+<div id="custom-api-fields" hidden><label for="provider-base">API temel adresi</label><input id="provider-base" type="url" placeholder="https://sunucu.example/v1" maxlength="500"><label for="provider-protocol">Protokol</label><select id="provider-protocol"><option value="chat">Chat Completions uyumlu</option><option value="messages">Anthropic Messages uyumlu</option></select><small>Ollama / LM Studio gibi bu bilgisayardaki uyumlu sunucular için http://127.0.0.1:PORT/v1 kullanılabilir; anahtar zorunlu değildir. Sunucuyu ayrıca başlatmalısın.</small></div>
+<label for="provider-key">Kendi API anahtarın</label><input id="provider-key" type="password" autocomplete="new-password" spellcheck="false" maxlength="4096" placeholder="Anahtarını buraya gir">
+<label class="provider-remember"><input id="provider-remember" type="checkbox"> Bu Windows hesabında şifreli hatırla</label>
+<small>Varsayılan: yalnızca açık oturum. Şifreli kayıt başka bilgisayara/hesaba taşınmaz. Anahtar sohbetlere ve dağıtım paketine eklenmez.</small>
+<p id="provider-save-status" role="status"></p><button type="submit" class="primary">Bağlantıyı kaydet</button> <button type="button" id="provider-forget" class="secondary">Anahtarı unut</button>
+</form><p><a id="provider-key-link" target="_blank" rel="noopener noreferrer">Anahtar oluştur ↗</a></p></dialog>
+<dialog id="catalog-dialog" class="catalog-dialog"><div class="catalog-heading"><div><span class="eyebrow">WINDOWS X64 · RESMÎ KAYNAKLAR</span><h2>Program indir</h2><p>Programları seçip topluca indirebilirsin. Taşınabilir olanlar otomatik hazırlanır.</p></div><button id="close-catalog" class="icon-button" aria-label="Paket merkezini kapat">×</button></div>
+<div class="catalog-tools"><input id="catalog-search" type="search" aria-label="Program kataloğunda ara" placeholder="Program veya yapacağın işi ara…"><select id="catalog-category" aria-label="Katalog kategorisi"><option>Tümü</option></select></div>
+<div class="catalog-presets"><span>Hızlı seçim:</span><button data-catalog-preset="daily" class="secondary">Günlük araçlar</button><button data-catalog-preset="code" class="secondary">Kod yazıyorum</button><button data-catalog-preset="creative" class="secondary">İçerik üretiyorum</button><button id="catalog-select-visible" class="text-button">Görünenleri seç</button><button id="catalog-clear" class="text-button">Seçimi temizle</button></div>
+<p class="catalog-note">Kurulum dosyaları yalnızca indirilir; otomatik çalıştırılmaz.</p>
+<div class="catalog-version-tools"><button id="catalog-updates" class="secondary">Güncellemeleri kontrol et</button><details class="catalog-help"><summary>Sürüm kontrolü sonucu</summary><p id="catalog-update-status" role="status">Henüz sürüm kontrolü yapılmadı.</p></details></div>
+<details class="catalog-help"><summary>İndirme ve yönetim hakkında</summary><p class="catalog-note">Kesilen indirmeyi yeniden seçerek sürdürebilirsin. Kaldırma yalnızca yönetilen paketlerde çalışır; dosyalar geri almak için saklanır, disk alanı boşaltılmaz. Profil verileri korunur. Sürüm kontrolü 24 pakette otomatik, 6 pakette yayıncı sayfası üzerinden yapılır; yeni sürüm kendiliğinden kurulmaz. İlk açılışta lisans, ağ veya ek çalışma zamanı gerekebilir. Kurulum dosyaları otomatik çalıştırılmaz.</p></details>
+<details id="catalog-removed" hidden><summary id="catalog-removed-summary">Geri alınabilir kaldırılanlar</summary><div id="catalog-removed-list"></div></details>
+<div id="catalog-list" class="catalog-grid"></div><div id="catalog-job" class="catalog-job" role="status" aria-live="polite" hidden></div>
+<div class="catalog-footer"><div><strong id="catalog-selection">0 program seçildi</strong><small id="catalog-selection-size">İndirme boyutu: 0 MB</small></div><button id="catalog-cancel" class="secondary" hidden>İndirmeyi iptal et</button><button id="catalog-install" class="primary" disabled>Seçilenleri indir ve hazırla ↓</button></div></dialog>
+</body>
+</html>

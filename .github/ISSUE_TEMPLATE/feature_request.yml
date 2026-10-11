@@ -1,0 +1,23 @@
+name: Feature request
+description: Suggest an improvement (English or Turkish).
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What task is difficult today?
+      description: Describe who encounters the problem and a concrete example.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Suggested behavior
+      description: Include alternatives or existing workarounds if useful.
+    validations:
+      required: true
+  - type: textarea
+    id: considerations
+    attributes:
+      label: Compatibility or constraints
+      description: Optional. Offline needs, download size, platform, licensing or privacy requirements.

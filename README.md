@@ -12,7 +12,7 @@ Keep your tools, projects, documents and optional AI models on a drive, then ope
 
 ## Get started
 
-From the repository’s **Releases** page, download `FieldDesk-0.8.0-windows-x64.zip`, extract it and double-click `START.cmd`. The release includes Python, pypdf, Pillow and PDFium, so a separate Python installation is not required. Choose a workspace folder and run the setup check. Setup creates missing workspace folders; it does not download programs or AI models.
+From the [v0.8.0 preview release](https://github.com/hasanyahsitr/fielddesk/releases/tag/v0.8.0), download `FieldDesk-0.8.0-windows-x64.zip`, extract it and double-click `START.cmd`. The release includes Python, pypdf, Pillow and PDFium, so a separate Python installation is not required. Choose a workspace folder and run the setup check. Setup creates missing workspace folders; it does not download programs or AI models.
 
 The interface defaults to **English**. Choose **Türkçe** in the top bar to switch without losing a typed message or visible conversation. The language preference is saved with the workspace and survives restarts. Documents, file paths, app inputs and model responses are not automatically translated.
 
@@ -70,7 +70,7 @@ This is an early Windows x64 release. The app catalog is intentionally pinned, l
 
 Bug reports and feature requests in English or Turkish are welcome. Include your FieldDesk version, Windows version and reproduction steps using test data. Remove API keys, session tokens and personal document excerpts from screenshots and logs. Use [CONTRIBUTING.md](CONTRIBUTING.md) for development and [SECURITY.md](SECURITY.md) for security-sensitive reports.
 
-See the [changelog](CHANGELOG.md), [preview release notes](docs/RELEASE-v0.8.0.md) and [roadmap](ROADMAP.md). The Windows CI workflow checks backend behavior, JavaScript syntax, localization and source release contents; a GitHub-hosted run only exists after the repository is published.
+See the [changelog](CHANGELOG.md), [preview release notes](docs/RELEASE-v0.8.0.md) and [roadmap](ROADMAP.md). The Windows CI workflow checks backend behavior, JavaScript syntax, localization and source release contents; the initial [GitHub-hosted Windows run](https://github.com/hasanyahsitr/fielddesk/actions/runs/38172259405) passed. Real OCR/model checks are performed separately with a supplied local kit.
 
 ## License and attribution
 

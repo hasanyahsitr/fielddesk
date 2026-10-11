@@ -205,3 +205,5 @@ Uygulamanın özgün kaynak kodu MIT lisanslıdır. Üçüncü taraf programlar 
 İngilizce veya Türkçe hata/özellik bildirimi açabilirsin. Sürüm, Windows bilgisi ve test verileriyle tekrarlama adımlarını ekle; API anahtarlarını, oturum bilgilerini ve özel belge alıntılarını paylaşma. [Katkı rehberi](CONTRIBUTING.md), [güvenlik politikası](SECURITY.md), [sürüm notları](docs/RELEASE-v0.8.0.md) ve [yol haritası](ROADMAP.md) depoda yer alır.
 
 Kaynak kod MIT lisanslıdır; dağıtımdaki bağımlılıklar ve ayrıca indirilen programlar kendi lisanslarına tabidir. [Üçüncü taraf bildirimleri](THIRD_PARTY_NOTICES.md) bu ayrımı açıklar. FieldDesk çalışma adıdır; isim uygunluğu, tasarım özgünlüğü veya marka tescili güvencesi verilmez.
+
+GitHub deposu: [hasanyahsitr/fielddesk](https://github.com/hasanyahsitr/fielddesk). [v0.8.0 önizleme yayını](https://github.com/hasanyahsitr/fielddesk/releases/tag/v0.8.0) Windows ve kaynak paketlerini içerir. Depo şu anda özeldir; bağlantılar yetkili GitHub hesabıyla açılır.

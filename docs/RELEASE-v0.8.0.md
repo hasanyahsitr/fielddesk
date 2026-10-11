@@ -20,6 +20,6 @@ For developers, **FieldDesk-0.8.0-source.zip** contains the source and community
 
 Windows x64 is the supported target. Local AI needs separate supported GGUF weights and llama.cpp; OCR needs Tesseract and language files. The current model runtime uses CPU and initial HDD loading may take minutes. Model responses need review. Chat context is bounded and cleared on page reload. Third-party tools may require runtimes, accounts or licenses. This is an early preview, not a claim of complete compatibility.
 
-Local validation: 61 backend tests, 18 localization checks, real Gemma conversation, real OCR and clean Windows ZIP startup. GitHub-hosted CI has not run before the repository is published.
+Local validation: 61 backend tests, 18 localization checks, real Gemma conversation, real OCR and clean Windows ZIP startup. GitHub-hosted Windows CI passed backend, JavaScript, localization and source release checks. The real OCR integration is skipped in ordinary hosted CI and was checked separately in the local kit.
 
 Report reproducible problems with the bug template, using test data and sanitized logs. See README, CONTRIBUTING, SECURITY and ROADMAP for details.
